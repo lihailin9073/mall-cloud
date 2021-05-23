@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: blog-business
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog-question
+  namespace: blog-business
+  labels:
+    ms/blog: blog-question
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      ms/blog: blog-question
+  template:
+    metadata:
+      labels:
+        ms/blog: blog-question
+    spec:
+      restartPolicy: Always
+      containers:
+        - image: 192.168.1.190:88/ms-blog/blog-question:0.0.1-SNAPSHOT
+          imagePullPolicy: Always
+          name: blog-question
+          ports:
+            - containerPort: 11300
+              name: port-11300
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog-question
+  namespace: blog-business
+  labels:
+    ms/blog: blog-question
+spec:
+  type: NodePort
+  ports:
+    - name: port-11300-blog-question
+      port: 11300
+      protocol: TCP
+      nodePort: 31300
+      targetPort: 11300
+  selector:
+    ms/blog: blog-question

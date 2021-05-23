@@ -1,0 +1,19 @@
+技术栈：
+	Spring Boot
+    Spring Cloud
+	Spring Security
+	Spring Cloud OAuth2
+	MyBatis Plus/Redis/MyCat/Seata/Kafka/ELK/K8s/Rancher/Zipkin/Sentinel等系列微服务中间件
+
+主要用途：
+	- 自我修炼，技术炼体用
+	- 打造产品，后续创业推广软件公司用
+
+业务功能：
+    - 具备mall-site的全部电商业务功能
+    - 支持B2C模式、B2B2C模式、拼多多模式
+    - 新增小程序商城、公众号商城、H5商城、APP商城、PC商城5大终端应用
+    - 新增抖商、微商、抢购、秒杀、红包、积分、满减满送、折扣包邮等淘宝天猫全系列营销工具
+    - 版本发行包括教育版、社区版、商业版，分别用于IT培训教学、产品宣传推广、商业销售业务
+
+

@@ -1,0 +1,68 @@
+#server:
+#  port: 11500
+##  servlet:
+##    context-path: /auth
+#
+#spring:
+#  application:
+#    name: auth-service
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 192.168.1.201:8848
+#        namespace: 4de4b457-1250-40fc-a274-85a029095374
+#        group: pre.release
+#        cluster-name: GuangZhou
+#        metadata:
+#          service-version: 2020.1210
+#          api-info: The lastest Api.
+#  datasource:
+#    url: jdbc:mysql://192.168.1.201:3306/mall-cloud-auth?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&allowMultiQueries=true
+#    hikari:
+#      username: root
+#      password: LHLlhl@870104
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#    druid:
+#      username: root
+#      password: LHLlhl@870104
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      # 指定启动连接池时，初始建立的连接数量
+#      initial-size: 10
+#      # 指定连接池中最小的活跃连接数
+#      min-idle: 10
+#      # 指定连接池中最大的活跃连接数
+#      max-active: 20
+#      # 指定连接池等待连接返回的最大等待时间 / 毫秒
+#      max-wait: 60000
+#      # 空闲连接回收的时间间隔，与test-while-idle一起使用，设置5分钟
+#      time-between-eviction-runs-millis: 300000
+#      test-while-idle: true
+#      # 连接池空闲连接的有效时间 ，设置30分钟
+#      min-evictable-idle-time-millis: 1800000
+#      # 验证连接是否可用
+#      validation-query: SELECT 1
+#  redis:
+#    host: 192.168.1.201
+#    port: 6379
+#    password: 123456
+#    database: 0
+#  jackson:
+#    default-property-inclusion: ALWAYS
+#    time-zone: GMT+8
+#    date-format: yyyy-MM-dd HH:mm:ss
+#
+## 日志级别
+#logging:
+#  level:
+#    com.wzliulan.mall.cloud.oauth2: debug
+#
+#swagger:
+#  title: 认证中心微服务接口文档
+#  version: 2021.0.1
+#  description: 认证中心微服务-身份认证、令牌解析、令牌刷新等服务接口
+##  exclude-path: /error,/oauth/** # 排除的api
+##  base-package: org.springframework.security.oauth2
+#  contact:
+#    name: 浏览电子商务有限公司
+#    url: www.wzliulan.com
+#    email: 767679879@qq.com

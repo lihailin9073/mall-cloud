@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzliulan.mall.cloud.article.mapper.LabelMapper">
+    <select id="queryByPage" resultType="com.wzliulan.mall.cloud.domain.model.article.Label">
+        SELECT
+            t1.`id`,
+            t1.`name`,
+            t1.`create_date`,
+            t1.`update_date`,
+            t2.`name` category_name
+        FROM
+            b_label t1
+        JOIN b_category t2 ON t1.category_id = t2.id
+        WHERE 1=1
+        <if test="labelReqDto.name!=null and labelReqDto.name!=''">
+            AND t1.`name` LIKE CONCAT('%', #{labelReqDto.name}, '%')
+        </if>
+        <if test="labelReqDto.categoryId!=null and labelReqDto.categoryId!=''">
+            AND t1.category_id = #{labelReqDto.categoryId}
+        </if>
+        ORDER BY t1.update_date DESC
+    </select>
+</mapper>

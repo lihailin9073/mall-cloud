@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: article-service
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.1.201:8848
+        namespace: 4de4b457-1250-40fc-a274-85a029095374
+        group: pre.release
+        file-extension: yml
+

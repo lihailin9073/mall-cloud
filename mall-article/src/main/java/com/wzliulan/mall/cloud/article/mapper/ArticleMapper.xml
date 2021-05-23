@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzliulan.mall.cloud.article.mapper.ArticleMapper">
+    <!-- 通过文章ID查询文章详情及标签 -->
+    <select id="findArticleAndLabel" resultMap="articleAndLabelResultMap">
+        SELECT
+            t1.*, t3.id label_id,
+            t3.`name` label_name
+        FROM
+            b_article t1
+        LEFT JOIN b_article_label t2 ON t1.id = t2.article_id
+        LEFT JOIN b_label t3 ON t3.id = t2.label_id
+        WHERE
+            t1.id = #{id}
+    </select>
+    <resultMap id="articleAndLabelResultMap" type="com.wzliulan.mall.cloud.domain.model.article.Article">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="user_image" property="userImage"/>
+        <result column="title" property="title"/>
+        <result column="summary" property="summary"/>
+        <result column="image_url" property="imageUrl"/>
+        <result column="md_content" property="mdContent"/>
+        <result column="html_content" property="htmlContent"/>
+        <result column="view_count" property="viewCount"/>
+        <result column="thumhup" property="thumhup"/>
+        <result column="status" property="status"/>
+        <result column="ispublic" property="ispublic"/>
+        <result column="create_date" property="createDate"/>
+        <result column="update_date" property="updateDate"/>
+        <collection property="labelIds" javaType="java.util.List" ofType="java.lang.String">
+            <id column="label_id" property="id" />
+        </collection>
+        <collection property="labelList" javaType="java.util.List" ofType="com.wzliulan.mall.cloud.domain.entity.article.LabelIdName">
+            <id column="label_id" property="id" />
+            <result column="label_name" property="name" />
+        </collection>
+    </resultMap>
+    
+    <!-- 根据文章ID，删除文章标签关联表中的关联数据 -->
+    <delete id="deleteArticleLabel">
+        DELETE FROM b_article_label WHERE article_id = #{articleId}
+    </delete>
+
+    <!-- 根据文章ID，保存文章标签关联表中的关联数据 -->
+    <insert id="saveArticleLabel">
+        INSERT INTO b_article_label (
+            `id`,
+            `article_id`,
+            `label_id`
+        )
+        VALUES
+        <foreach collection="labelIds" item="labelId" separator=",">
+            (
+                '${@com.baomidou.mybatisplus.core.toolkit.IdWorker@getId()}',
+                #{articleId},
+                #{labelId}
+            )
+        </foreach>
+    </insert>
+
+    <!-- 文章表、评论表关联的用户信息更新方法 -->
+    <update id="updateUserInfo">
+        UPDATE b_article SET nick_name = #{nickName}, user_image = #{userImage} WHERE user_id = #{userId};
+        UPDATE b_comment SET nick_name = #{nickName}, user_image = #{userImage} WHERE user_id = #{userId};
+    </update>
+
+    <!-- 已发表文章查询方法 -->
+    <select id="queryPortalIndexArticle" resultType="com.wzliulan.mall.cloud.domain.model.article.Article">
+        SELECT
+            DISTINCT t3.*
+        FROM
+            b_label t1
+        JOIN b_article_label t2 ON t1.id = t2.label_id
+        JOIN b_article t3 ON t3.id = t2.article_id
+        WHERE
+            t3.`ispublic` = 1
+        AND t3.`status` = 2
+        <if test="queryIndexDto.labelId!=null and queryIndexDto.labelId!=''">
+            AND t1.id = #{queryIndexDto.labelId}
+        </if>
+        <if test="queryIndexDto.categoryId!=null and queryIndexDto.categoryId!=''">
+            AND t1.category_id = #{queryIndexDto.categoryId}
+        </if>
+        ORDER BY t3.update_date DESC
+    </select>
+
+    <!--各频道文章数统计方法[调用视图]-->
+    <select id="countCategoryArticleNums" resultType="java.util.Map">
+        SELECT `name`, num FROM `v_category_article_count`
+    </select>
+
+    <!--近6个月文章数统计方法[调用视图]-->
+    <select id="count6MothArticleNums" resultType="java.util.Map">
+        SELECT `year_month`, total FROM `v_six_month_aritcle_count`
+    </select>
+
+</mapper>

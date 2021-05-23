@@ -1,0 +1,30 @@
+version: '3'
+services:
+  gateway-service:
+    image: blog-gateway:0.0.1-SNAPSHOT
+    restart: always
+    ports:
+      - "9100:11000"
+  article-service:
+    image: blog-article:0.0.1-SNAPSHOT
+    restart: always
+    ports:
+      - "9200:11200"
+  question-service:
+    image: blog-question:0.0.1-SNAPSHOT
+    restart: always
+    ports:
+      - "9300:11300"
+  system-service:
+    image: blog-system:0.0.1-SNAPSHOT
+    restart: always
+    ports:
+      - "9400:11400"
+  auth-service:
+    image: blog-oauth2:0.0.1-SNAPSHOT
+    restart: always
+    ports:
+      - "9500:11500"
+volumes:
+  db_data:
+
