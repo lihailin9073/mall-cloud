@@ -9,7 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
-@ApiModel("已发表文章查询接口Dto")
+@ApiModel("已发表文章搜索接口Dto")
 @Data
 @Accessors(chain = true)
 @NoArgsConstructor

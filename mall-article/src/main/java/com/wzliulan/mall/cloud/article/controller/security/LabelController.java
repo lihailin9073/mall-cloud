@@ -30,7 +30,7 @@ public class LabelController {
     @Autowired
     private ILabelService labelService;
 
-    @ApiOperation("标签查询接口")
+    @ApiOperation("标签搜索接口")
     @PostMapping("/search")
     public ApiResponse search(@RequestBody LabelQueryDto labelReqDto) {
         //log.info("--------->search");

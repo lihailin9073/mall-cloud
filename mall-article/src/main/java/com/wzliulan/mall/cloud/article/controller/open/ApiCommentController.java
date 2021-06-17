@@ -37,7 +37,7 @@ public class ApiCommentController {
         return ApiResponse.ok();
     }
 
-    @ApiOperation("文章评论递归查询接口")
+    @ApiOperation("文章评论递归搜索接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "article_id", value = "文章ID", required = true),
     })

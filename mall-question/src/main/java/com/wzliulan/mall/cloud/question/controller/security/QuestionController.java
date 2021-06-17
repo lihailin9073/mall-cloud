@@ -55,7 +55,7 @@ public class QuestionController {
         return questionService.updateQuestionThumbsup(id, count);
     }
 
-    @ApiOperation("个人问题查询接口")
+    @ApiOperation("个人问题搜索接口")
     @PostMapping("/user")
     public ApiResponse findByUserId(@RequestBody QuestionUserQueryDto questionUserQueryDto) {
         return questionService.findByUserId(questionUserQueryDto);

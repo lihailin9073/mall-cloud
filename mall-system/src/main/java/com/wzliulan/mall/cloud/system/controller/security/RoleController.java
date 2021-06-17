@@ -30,7 +30,7 @@ public class RoleController {
     @Autowired
     private IRoleService roleService;
 
-    @ApiOperation("角色查询接口")
+    @ApiOperation("角色搜索接口")
     @PostMapping("/query")
     public ApiResponse query(@RequestBody RoleQueryDto roleQueryDto) {
         try {

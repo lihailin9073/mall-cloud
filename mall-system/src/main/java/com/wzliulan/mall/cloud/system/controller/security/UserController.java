@@ -139,13 +139,13 @@ public class UserController {
         return userService.updateUserInfo(userInfoUpdateDto);
     }
 
-    @ApiOperation("用户总数查询接口")
+    @ApiOperation("用户总数搜索接口")
     @GetMapping("/count")
     public ApiResponse userCount() {
         return userService.countTotalUser();
     }
 
-    @ApiOperation("指定用户所拥有的菜单及按钮查询接口")
+    @ApiOperation("指定用户所拥有的菜单及按钮搜索接口")
     @ApiImplicitParam(name = "userId", value = "用户ID", required = true)
     @GetMapping("/find/menus/{userId}")
     public ApiResponse findUserMenuTreeAndButton(@PathVariable("userId") String userId) {

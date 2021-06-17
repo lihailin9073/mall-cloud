@@ -25,7 +25,7 @@ public class ApiAdvertController {
     @Autowired
     private IAdvertService advertService;
 
-    @ApiOperation("指定位置广告信息查询接口")
+    @ApiOperation("指定位置广告信息搜索接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "position", value = "广告位编号", required = true),
     })

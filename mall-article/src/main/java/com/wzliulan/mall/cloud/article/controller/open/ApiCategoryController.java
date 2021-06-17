@@ -24,7 +24,7 @@ public class ApiCategoryController {
     @Autowired
     private ICategoryService categoryService;
 
-    @ApiOperation("正常分类查询接口")
+    @ApiOperation("正常分类搜索接口")
     @GetMapping("/list")
     public ApiResponse queryAllNormal() {
         try {
@@ -36,7 +36,7 @@ public class ApiCategoryController {
         }
     }
 
-    @ApiOperation("常态分类及其下标签查询接口")
+    @ApiOperation("常态分类及其下标签搜索接口")
     @GetMapping("/label/list")
     public ApiResponse queryNormalCategoryLabel() {
         try {

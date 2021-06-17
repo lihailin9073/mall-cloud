@@ -45,7 +45,7 @@ public class CategoryController {
         }
     }
 
-    @ApiOperation("常态分类查询接口")
+    @ApiOperation("常态分类搜索接口")
     @GetMapping("/normal")
     public ApiResponse queryAllNormal() {
         try {
@@ -57,7 +57,7 @@ public class CategoryController {
         }
     }
 
-    @ApiOperation("常态分类及其下标签查询接口")
+    @ApiOperation("常态分类及其下标签搜索接口")
     @GetMapping("/label/list")
     public ApiResponse queryNormalCategoryLabel() {
         try {

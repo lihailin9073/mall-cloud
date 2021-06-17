@@ -21,7 +21,7 @@ public class Swagger2Config {
     @Bean
     Docket docket1() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("认证中心API")
+                .groupName("自定义-API")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.wzliulan.mall.cloud.oauth2.web.controller"))
                 .paths(PathSelectors.any())

@@ -6,7 +6,6 @@
 	MyBatis Plus/Redis/MyCat/Seata/Kafka/ELK/K8s/Rancher/Zipkin/Sentinel等系列微服务中间件
 
 主要用途：
-	- 自我修炼，技术炼体用
 	- 打造产品，后续创业推广软件公司用
 
 业务功能：

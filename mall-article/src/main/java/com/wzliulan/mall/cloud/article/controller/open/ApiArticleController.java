@@ -46,7 +46,7 @@ public class ApiArticleController {
         return articleService.updateArticleViewCount(id);
     }
 
-    @ApiOperation("已发表文章查询接口")
+    @ApiOperation("已发表文章搜索接口")
     @PostMapping("/portal/index/articles")
     public ApiResponse queryPortalIndexArticle(@RequestBody ArticleQueryIndexDto articleQueryIndexDto) {
         return articleService.queryPortalIndexArticle(articleQueryIndexDto);

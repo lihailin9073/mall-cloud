@@ -28,7 +28,7 @@ public class ApiQuestionController {
     @Autowired
     private IQuestionService questionService;
 
-    @ApiOperation("热门问答分页查询接口")
+    @ApiOperation("热门问答分页搜索接口")
     @PostMapping("/query-hot")
     public ApiResponse queryHotQuestionList(@RequestBody BaseQueryDto<Question> baseQueryDto) {
         IPage<Question> iPage = null;
@@ -41,7 +41,7 @@ public class ApiQuestionController {
         }
     }
 
-    @ApiOperation("最新问答分页查询接口")
+    @ApiOperation("最新问答分页搜索接口")
     @PostMapping("/query-lastest")
     public ApiResponse queryLastestQuestionList(@RequestBody BaseQueryDto<Question> baseQueryDto) {
         IPage<Question> iPage = null;
@@ -54,13 +54,13 @@ public class ApiQuestionController {
         }
     }
 
-    @ApiOperation("待回复问题清单查询接口")
+    @ApiOperation("待回复问题清单搜索接口")
     @PostMapping("/query-wait")
     public ApiResponse queryWaitQuestionList(@RequestBody BaseQueryDto<Question> baseQueryDto) {
         return ApiResponse.ok(questionService.queryWaitQuestions(baseQueryDto));
     }
 
-    @ApiOperation("标签ID检索问题分页查询接口")
+    @ApiOperation("标签ID检索问题分页搜索接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "labelId", value = "标签ID", required = true),
     })

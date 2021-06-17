@@ -23,7 +23,7 @@ public class SystemFeignController implements SystemFeign {
     private IMenuService menuService;
 
     /**
-     * 用户信息查询接口
+     * 用户信息搜索接口
      * @param userName 用户账号
      * @return
      */
@@ -34,7 +34,7 @@ public class SystemFeignController implements SystemFeign {
     }
 
     /**
-     * 用户权限菜单查询接口
+     * 用户权限菜单搜索接口
      * @param userId 用户ID
      * @return
      */

@@ -34,7 +34,7 @@ public class AdvertController {
     @Autowired
     private IAdvertService advertService;
 
-    @ApiOperation("广告查询接口")
+    @ApiOperation("广告搜索接口")
     @PostMapping("/search")
     public ApiResponse search(@RequestBody AdvertQueryDto advertQueryDto) {
         return advertService.queryByPage(advertQueryDto);

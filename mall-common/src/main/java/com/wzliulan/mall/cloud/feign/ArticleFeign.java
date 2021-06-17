@@ -14,7 +14,7 @@ public interface ArticleFeign {
 
     // allowMultiple = true 表示是数组格式的参数， dataType = "String" 数组中参数的类型
     @ApiImplicitParam(allowMultiple = true, dataType = "String", name="ids", value = "标签ID集合", required = true)
-    @ApiOperation("标签查询接口")
+    @ApiOperation("标签搜索接口")
     @GetMapping("/api/feign/label/list/{ids}")
     List<Label> getLabelListByIds(@PathVariable("ids") List<String> labelIds);
 

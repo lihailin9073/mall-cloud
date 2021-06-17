@@ -37,7 +37,7 @@ public class ArticleController {
     @Autowired
     private IArticleService articleService;
 
-    @ApiOperation("文章查询接口")
+    @ApiOperation("文章搜索接口")
     @PreAuthorize("hasAuthority('article:view')") // 在调用方法前，会先执行权限校验
     @PostMapping("/search")
     public ApiResponse search(@RequestBody ArticleQueryDto articleQueryDto) {
@@ -143,7 +143,7 @@ public class ArticleController {
         }
     }
 
-    @ApiOperation("个人文章查询接口")
+    @ApiOperation("个人文章搜索接口")
     @PostMapping("/user")
     public ApiResponse queryUserArticle(@RequestBody ArticleUserDto articleUserDto) {
         return articleService.findUserArticle(articleUserDto);

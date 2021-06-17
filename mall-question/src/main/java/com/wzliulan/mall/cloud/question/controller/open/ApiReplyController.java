@@ -28,7 +28,7 @@ public class ApiReplyController {
     @Autowired
     private IReplyService replyService;
 
-    @ApiOperation("回复递归查询接口")
+    @ApiOperation("回复递归搜索接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "questionId", value = "问题ID", required = true)
     })

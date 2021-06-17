@@ -56,7 +56,7 @@ public interface IArticleService extends IService<Article> {
     boolean updateArticleUserInfo(UserBaseInfoUpdateDto userBaseInfoUpdateDto);
 
     /**
-     * 用户已发布文章查询接口
+     * 用户已发布文章搜索接口
      * @param articleUserDto 查询条件对象
      * @return
      */

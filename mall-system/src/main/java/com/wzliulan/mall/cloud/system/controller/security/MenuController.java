@@ -32,7 +32,7 @@ public class MenuController {
     @Autowired
     private IMenuService menuService;
 
-    @ApiOperation("菜单查询接口")
+    @ApiOperation("菜单搜索接口")
     @PostMapping("/search")
     public ApiResponse querySystemMenuList(@RequestBody MenuQueryDto menuQueryDto) {
         try {
@@ -69,7 +69,7 @@ public class MenuController {
         return ApiResponse.ok();
     }
 
-    @ApiOperation("菜单详情查询接口")
+    @ApiOperation("菜单详情搜索接口")
     @ApiImplicitParam(name = "id", value = "菜单ID", required = true)
     @PostMapping("/find/{id}")
     public ApiResponse findById(@PathVariable("id") String id) {
