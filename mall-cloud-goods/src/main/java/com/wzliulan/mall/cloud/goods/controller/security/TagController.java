@@ -39,7 +39,7 @@ public class TagController {
     @Resource
     private ITagService tagService;
 
-    @ApiOperation("标签创建接口")
+    @ApiOperation("标签创建")
     @PreAuthorize("hasAuthority('tag:add')")
     @PostMapping("/create")
     public Object create(@RequestBody TagCreateDto tagCreateDto) {
@@ -56,7 +56,7 @@ public class TagController {
         }
     }
 
-    @ApiOperation("标签删除接口")
+    @ApiOperation("标签删除")
     @ApiImplicitParam(name = "id", value = "标签ID", required = true)
     @PreAuthorize("hasAuthority('tag:delete')")
     @DeleteMapping("/remove/{id}")
@@ -72,7 +72,7 @@ public class TagController {
         }
     }
 
-    @ApiOperation("标签批量删除接口")
+    @ApiOperation("标签批量删除")
     @PreAuthorize("hasAuthority('tag:delete')")
     @DeleteMapping("/removes")
     public Object removes(String[] ids) {
@@ -91,7 +91,7 @@ public class TagController {
         }
     }
 
-    @ApiOperation("标签修改接口")
+    @ApiOperation("标签修改")
     @PreAuthorize("hasAuthority('tag:update')")
     @PutMapping("/edit")
     public Object edit(@RequestBody TagUpdateDto tagUpdateDto) {
@@ -111,7 +111,7 @@ public class TagController {
             return ApiResponse.error("操作失败！");
         }
     }
-    @ApiOperation("标签查找接口")
+    @ApiOperation("标签查找")
     @PreAuthorize("hasAuthority('tag:find')")
     @GetMapping("/find/{id}")
     public ApiResponse find(@PathVariable("id") Integer id) {
@@ -119,7 +119,7 @@ public class TagController {
         return ApiResponse.ok(id);
     }
 
-    @ApiOperation("标签搜索接口")
+    @ApiOperation("标签搜索")
     @PreAuthorize("hasAuthority('tag:search')")
     @PostMapping("/search")
     public Object search(@RequestBody TagQueryDto queryDto) {

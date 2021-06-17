@@ -40,7 +40,7 @@ public class Swagger2Config {
     @Bean
     Docket docket2() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("Feign客户端接口")
+                .groupName("Feign接口")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.wzliulan.mall.cloud.report.controller.feign"))
                 .paths(PathSelectors.any())

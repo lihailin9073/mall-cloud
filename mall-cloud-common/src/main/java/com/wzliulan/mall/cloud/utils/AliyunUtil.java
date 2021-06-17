@@ -6,7 +6,7 @@ import com.aliyun.oss.common.comm.ResponseMessage;
 import com.aliyun.oss.model.PutObjectResult;
 import com.wzliulan.mall.cloud.domain.dto.ApiResponse;
 import com.wzliulan.mall.cloud.enums.FileFromEnum;
-import com.wzliulan.mall.cloud.properties.AliyunProperties;
+import com.wzliulan.mall.cloud.properties.OssProperties;
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,10 +22,10 @@ public final class AliyunUtil {
      * 上传图片文件
      * @param fileFromEnum 文件来源类型：文章、问题、用户
      * @param file  MultipartFile文件对象
-     * @param aliyun AliyunProperties 阿里云配置
+     * @param aliyun OssProperties 阿里云配置
      * @return
      */
-    public static ApiResponse uploadFileToOss(FileFromEnum fileFromEnum, MultipartFile file, AliyunProperties aliyun ) {
+    public static ApiResponse uploadFileToOss(FileFromEnum fileFromEnum, MultipartFile file, OssProperties aliyun ) {
         // 上传
         // 上传文件所在目录名，当天上传的文件放到当天日期的目录下。
         String folderName = fileFromEnum.name().toLowerCase() + "/" + DateFormatUtils.format(new Date(), "yyyyMMdd");
@@ -73,7 +73,7 @@ public final class AliyunUtil {
      * 根据文件url删除
      * @param fileUrl
      */
-    public static ApiResponse delete(String fileUrl, AliyunProperties aliyun) {
+    public static ApiResponse delete(String fileUrl, OssProperties aliyun) {
         // 去除文件 url 中的 Bucket域名，得到如下格式的文件路径：article/20210211/xxx.jpg
         String filePath = fileUrl.replace(aliyun.getBucketDomain() + "/", "");
 

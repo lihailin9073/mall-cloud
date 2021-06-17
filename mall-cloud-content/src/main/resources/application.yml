@@ -86,7 +86,7 @@
 #    com.wzliulan.mall.goods.mapper: debug
 #
 ## 阿里云OSS配置
-#blog:
+#mall:
 #  aliyun:
 #    # OSS端点信息
 #    endpoint: https://oss-cn-beijing.aliyuncs.com

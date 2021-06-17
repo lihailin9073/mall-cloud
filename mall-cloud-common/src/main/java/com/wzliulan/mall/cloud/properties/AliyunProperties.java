@@ -1,24 +1,17 @@
 package com.wzliulan.mall.cloud.properties;
 
 import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
 @Data
+@Component
+@ConfigurationProperties(prefix = "mall.aliyun")
 public class AliyunProperties implements Serializable {
-    // OSS端点信息
-    private String endpoint;
-    private String accessKeyId;
-    private String accessKeySecret;
-    // OSS端点信息
-
     /**
-     * Bucket存储空间名称
+     * 阿里云OSS配置
      */
-    private String bucketName;
-    /**
-     * Bucket 域名：访问图片时的基础URL
-     */
-    private String bucketDomain;
-
+    private OssProperties oss;
 }

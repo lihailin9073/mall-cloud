@@ -40,7 +40,7 @@ public class Swagger2Config {
     @Bean
     Docket docket2() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("Feign客户端接口")
+                .groupName("Feign接口")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.wzliulan.mall.cloud.goods.controller.feign"))
                 .paths(PathSelectors.any())
@@ -49,7 +49,7 @@ public class Swagger2Config {
     }
     private ApiInfo getApiInfo2() {
         return new ApiInfoBuilder()
-                .title("[系统微服务/Feign-API]接口文档")
+                .title("[商品微服务/Feign-API]接口文档")
                 .version("2021.0.1")
                 .description("商品微服务-品类、品牌、商品、属性等服务接口")
                 .contact(new Contact("浏览电子商务有限公司","http://www.wzliulan.com/contact","767679879@qq.com"))

@@ -33,7 +33,7 @@ public class TypeController {
     @Resource
     private ITypeService typeService;
 
-    @ApiOperation("商品类型创建接口")
+    @ApiOperation("商品类型创建")
     @PostMapping("/create")
     public Object create(@RequestBody TypeCreateDto typeCreateDto){
         Type type = Type.builder().build();
@@ -50,7 +50,7 @@ public class TypeController {
         }
     }
 
-    @ApiOperation("商品类型删除接口")
+    @ApiOperation("商品类型删除")
     @ApiImplicitParam(name = "id", value = "类型ID", required = true)
     @DeleteMapping("/remove/{id}")
     public Object remove(@PathVariable("id") String id){
@@ -64,7 +64,7 @@ public class TypeController {
         }
     }
 
-    @ApiOperation("商品类型更新接口")
+    @ApiOperation("商品类型更新")
     @PutMapping("/edit")
     public Object edit(@RequestBody TypeUpdateDto typeUpdateDto){
         Type type = Type.builder().build();
@@ -81,7 +81,7 @@ public class TypeController {
         }
     }
 
-    @ApiOperation("商品类型搜索接口")
+    @ApiOperation("商品类型搜索")
     @PostMapping("/search")
     public Object search(@RequestBody TypeQueryDto typeQueryDto){
         IPage<TypeDomain> typeDomainIPage = null;

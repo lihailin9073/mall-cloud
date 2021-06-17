@@ -1,12 +1,13 @@
 
 # 阿里云OSS配置
-blog:
+mall:
   aliyun:
-    # OSS端点信息
-    endpoint: https://oss-cn-beijing.aliyuncs.com
-    accessKeyId: LTAI4G7LabLGbyh1U1bF4zQM
-    accessKeySecret: GICubgwsU5TMHX3LgVuafyxFNf9Lgz
-    # Bucket存储空间名称
-    bucketName: ms-blog-oss
-    # Bucket 域名：访问图片时的基础URL
-    bucketDomain: https://ms-blog-oss.oss-cn-beijing.aliyuncs.com
+    oss:
+      # OSS端点信息
+      endpoint: https://oss-cn-beijing.aliyuncs.com
+      accessKeyId: LTAI4G7LabLGbyh1U1bF4zQM
+      accessKeySecret: GICubgwsU5TMHX3LgVuafyxFNf9Lgz
+      # Bucket存储空间名称
+      bucketName: ms-blog-oss
+      # Bucket 域名：访问图片时的基础URL
+      bucketDomain: https://ms-blog-oss.oss-cn-beijing.aliyuncs.com

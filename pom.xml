@@ -21,8 +21,6 @@
         <module>mall-cloud-gateway</module>
         <module>mall-cloud-oauth2-server</module>
         <module>mall-cloud-system</module>
-        <module>mall-article</module>
-        <module>mall-question</module>
         <module>mall-cloud-goods</module>
         <module>mall-cloud-order</module>
         <module>mall-cloud-marketing</module>
@@ -31,6 +29,8 @@
         <module>mall-cloud-ads</module>
         <module>mall-cloud-report</module>
         <module>mall-cloud-search</module>
+        <module>mall-article</module>
+        <module>mall-question</module>
     </modules>
 
     <properties>

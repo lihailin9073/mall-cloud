@@ -26,7 +26,7 @@ public class BrandController {
     @Resource
     private IBrandService brandService;
 
-    @ApiOperation("品牌创建接口")
+    @ApiOperation("品牌创建")
     @PreAuthorize("hasAuthority('brand:add')")
     @PostMapping("/create")
     public Object create(@RequestBody BrandCreateDto brandCreateDto) {
@@ -44,7 +44,7 @@ public class BrandController {
         }
     }
 
-    @ApiOperation("品牌删除接口")
+    @ApiOperation("品牌删除")
     @ApiImplicitParam(name = "id", value = "品牌ID", required = true)
     @PreAuthorize("hasAuthority('brand:delete')")
     @DeleteMapping("/remove/{id}")
@@ -59,7 +59,7 @@ public class BrandController {
         }
     }
 
-    @ApiOperation("品牌修改接口")
+    @ApiOperation("品牌修改")
     @PreAuthorize("hasAuthority('brand:update')")
     @PutMapping("/edit")
     public Object edit(@RequestBody BrandUpdateDto brandUpdateDto) {
@@ -77,7 +77,7 @@ public class BrandController {
         }
     }
 
-    @ApiOperation("品牌查找接口")
+    @ApiOperation("品牌查找")
     @PreAuthorize("hasAuthority('brand:find')")
     @ApiImplicitParam(name = "id", value = "品牌ID", required = true)
     @GetMapping("/find/{id}")
@@ -91,7 +91,7 @@ public class BrandController {
         return ApiResponse.error("查询服务异常！");
     }
 
-    @ApiOperation("品牌搜索接口")
+    @ApiOperation("品牌搜索")
     @PreAuthorize("hasAuthority('brand:search')")
     @PostMapping("/search")
     public Object search(@RequestBody BrandQueryDto queryDto) {
@@ -105,7 +105,7 @@ public class BrandController {
         }
     }
 
-    @ApiOperation("显示设置接口")
+    @ApiOperation("显示设置")
     @ApiImplicitParam(name = "id", value = "品牌ID", required = true)
     @PreAuthorize("hasAuthority('brand:is-show')")
     @GetMapping("/set-display/{id}")

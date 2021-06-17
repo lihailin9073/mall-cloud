@@ -8,7 +8,7 @@ import com.wzliulan.mall.cloud.domain.model.article.Advert;
 import com.wzliulan.mall.cloud.article.mapper.AdvertMapper;
 import com.wzliulan.mall.cloud.article.service.IAdvertService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.wzliulan.mall.cloud.properties.BlogProperties;
+import com.wzliulan.mall.cloud.properties.AliyunProperties;
 import com.wzliulan.mall.cloud.utils.AliyunUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ import java.util.List;
 @Service
 public class AdvertServiceImpl extends ServiceImpl<AdvertMapper, Advert> implements IAdvertService {
     @Autowired
-    private BlogProperties blogProperties;
+    private AliyunProperties aliyunProperties;
 
     @Override
     public ApiResponse queryByPage(AdvertQueryDto advertQueryDto) {
@@ -49,7 +49,7 @@ public class AdvertServiceImpl extends ServiceImpl<AdvertMapper, Advert> impleme
         try {
             Advert advert = baseMapper.selectById(id);
             if (StringUtils.isNotEmpty(advert.getImageUrl())) {
-                AliyunUtil.delete(advert.getImageUrl(), blogProperties.getAliyun());
+                AliyunUtil.delete(advert.getImageUrl(), aliyunProperties.getOss());
             }
             baseMapper.deleteById(id);
             return ApiResponse.ok();

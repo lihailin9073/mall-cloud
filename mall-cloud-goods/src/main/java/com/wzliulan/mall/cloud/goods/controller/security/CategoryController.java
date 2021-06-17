@@ -34,7 +34,7 @@ public class CategoryController {
     @Resource
     private ICategoryService categoryService;
 
-    @ApiOperation("品类创建接口")
+    @ApiOperation("品类创建")
     @PreAuthorize("hasAuthority('category:add')")
     @PostMapping("/create")
     public Object create(@RequestBody CategoryCreateDto categoryCreateDto) {
@@ -52,7 +52,7 @@ public class CategoryController {
         }
     }
 
-    @ApiOperation("品类删除接口")
+    @ApiOperation("品类删除")
     @ApiImplicitParam(name = "id", value = "品类ID", required = true)
     @PreAuthorize("hasAuthority('category:delete')")
     @DeleteMapping("/remove/{id}")
@@ -67,7 +67,7 @@ public class CategoryController {
         }
     }
 
-    @ApiOperation("品类修改接口")
+    @ApiOperation("品类修改")
     @PreAuthorize("hasAuthority('category:update')")
     @PutMapping("/edit")
     public Object edit(@RequestBody CategoryUpdateDto categoryUpdateDto) {
@@ -85,7 +85,7 @@ public class CategoryController {
         }
     }
 
-    @ApiOperation("品类查找接口")
+    @ApiOperation("品类查找")
     @ApiImplicitParam(name = "id", value = "品类ID", required = true)
     @PreAuthorize("hasAuthority('category:find')")
     @GetMapping("/find/{id}")
@@ -99,7 +99,7 @@ public class CategoryController {
         return ApiResponse.error("查询服务异常！");
     }
 
-    @ApiOperation("品类搜索接口")
+    @ApiOperation("品类搜索")
     @PreAuthorize("hasAuthority('category:search')")
     @PostMapping("/search")
     public Object search(@RequestBody CategoryQueryDto categoryQueryDto) {
@@ -112,7 +112,7 @@ public class CategoryController {
         return ApiResponse.error("查询服务异常！");
     }
 
-    @ApiOperation("商品转移接口")
+    @ApiOperation("商品转移")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "sourceCategoryId", value = "来源分类ID", required = true),
             @ApiImplicitParam(name = "targetCategoryId", value = "目标分类ID", required = true)
