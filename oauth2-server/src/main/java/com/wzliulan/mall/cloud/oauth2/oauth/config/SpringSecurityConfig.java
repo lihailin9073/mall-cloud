@@ -22,17 +22,17 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Resource
     private UserDetailsService userDetailsService;
     @Autowired
-    private AuthSuccessHandler authSuccessHandler; // 成功处理器
+    private AuthSuccessHandler authSuccessHandler; // 认证成功处理器
     @Autowired
-    private AuthFailHandler authFailHandler; // 失败处理器
+    private AuthFailHandler authFailHandler; // 认证失败处理器
     @Autowired
     private LogoutSucHandler logoutSucHandler; // 退出成功处理器
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        //super.configure(auth);
         // 使用自定义用户信息进行身份认证
         auth.userDetailsService(this.userDetailsService);
-        //super.configure(auth);
     }
 
     @Bean // 认证模式为密码认证模式时，需要此Bean

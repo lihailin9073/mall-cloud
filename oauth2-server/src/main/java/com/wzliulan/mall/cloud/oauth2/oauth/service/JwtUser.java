@@ -14,9 +14,9 @@ import java.util.List;
 
 @ApiModel(value="自定义实现的登录认证用户类", description="自定义实现的登录认证用户类")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class JwtUser implements UserDetails {
     @ApiModelProperty(value = "用户ID")
     private String uid;
@@ -57,13 +57,11 @@ public class JwtUser implements UserDetails {
     @ApiModelProperty(value = "帐户是否可用(1 可用，0 删除用户)")
     private  boolean isEnabled;
 
-    /**
-     * 封装用户拥有的菜单权限标识
-     */
     @JSONField(serialize = false) // 忽略转json
+    @ApiModelProperty(value = "用户的权限集合：权限码或角色名")
     private List<GrantedAuthority> authorities;
 
-//    //    isAccountNonExpired 是 Integer 类型接收，然后转 boolean
+//    // isAccountNonExpired 是 Integer 类型接收，然后转 boolean
 //    public JwtUser(String uid, String username, String password,
 //                   String nickName, String imageUrl, String mobile, String email,
 //                   Integer isAccountNonExpired, Integer isAccountNonLocked,

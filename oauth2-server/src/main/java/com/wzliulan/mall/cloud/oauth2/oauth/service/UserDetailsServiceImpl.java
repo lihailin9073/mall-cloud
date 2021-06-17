@@ -38,7 +38,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         // 3、通过用户ID查询数据库中的权限信息
         List<Menu> menuList = systemFeign.findMenuListByUserId(user.getId());
 
-        // 4、封装权限信息：即把权限标志符 code 字段的值封装到com.wzliulan.mall.cloud.oauth2.service.JwtUser.authorities属性中
+        // 4、封装权限信息：即把权限标志符[权限码] code 字段的值封装到 com.wzliulan.mall.cloud.oauth2.service.JwtUser.authorities 属性中，Spring Security支持两种鉴权数据：角色名、权限码
         List<GrantedAuthority> authorities = null;
         if (CollectionUtils.isNotEmpty(menuList)) {
             authorities = new ArrayList<>();
