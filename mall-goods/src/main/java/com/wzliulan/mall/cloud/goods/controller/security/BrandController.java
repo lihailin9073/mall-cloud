@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -26,6 +27,7 @@ public class BrandController {
     private IBrandService brandService;
 
     @ApiOperation("品牌创建接口")
+    @PreAuthorize("hasAuthority('brand:add')")
     @PostMapping("/create")
     public Object create(@RequestBody BrandCreateDto brandCreateDto) {
         Brand brand = Brand.builder().build();
@@ -44,6 +46,7 @@ public class BrandController {
 
     @ApiOperation("品牌删除接口")
     @ApiImplicitParam(name = "id", value = "品牌ID", required = true)
+    @PreAuthorize("hasAuthority('brand:delete')")
     @DeleteMapping("/remove/{id}")
     public Object remove(@PathVariable("id") String id) {
         try {
@@ -57,6 +60,7 @@ public class BrandController {
     }
 
     @ApiOperation("品牌修改接口")
+    @PreAuthorize("hasAuthority('brand:update')")
     @PutMapping("/edit")
     public Object edit(@RequestBody BrandUpdateDto brandUpdateDto) {
         Brand brand = Brand.builder().build();
@@ -74,12 +78,13 @@ public class BrandController {
     }
 
     @ApiOperation("品牌查找接口")
+    @PreAuthorize("hasAuthority('brand:find')")
     @ApiImplicitParam(name = "id", value = "品牌ID", required = true)
     @GetMapping("/find/{id}")
     public Object find(@PathVariable("id") String id) {
         try {
             Brand brand = brandService.getById(id);
-            if (null != brand) return ApiResponse.ok(brand);
+            return ApiResponse.ok(brand);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -87,6 +92,7 @@ public class BrandController {
     }
 
     @ApiOperation("品牌搜索接口")
+    @PreAuthorize("hasAuthority('brand:search')")
     @PostMapping("/search")
     public Object search(@RequestBody BrandQueryDto queryDto) {
         IPage<Brand> brandIPage = null;
@@ -101,6 +107,7 @@ public class BrandController {
 
     @ApiOperation("显示设置接口")
     @ApiImplicitParam(name = "id", value = "品牌ID", required = true)
+    @PreAuthorize("hasAuthority('brand:is-show')")
     @GetMapping("/set-display/{id}")
     public Object setDisplay(@PathVariable("id") String id) {
         Brand brand = brandService.getById(id);

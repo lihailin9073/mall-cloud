@@ -14,6 +14,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -39,6 +40,7 @@ public class TagController {
     private ITagService tagService;
 
     @ApiOperation("标签创建接口")
+    @PreAuthorize("hasAuthority('tag:add')")
     @PostMapping("/create")
     public Object create(@RequestBody TagCreateDto tagCreateDto) {
         Tag tag = Tag.builder().build();
@@ -56,6 +58,7 @@ public class TagController {
 
     @ApiOperation("标签删除接口")
     @ApiImplicitParam(name = "id", value = "标签ID", required = true)
+    @PreAuthorize("hasAuthority('tag:delete')")
     @DeleteMapping("/remove/{id}")
     public Object remove(@PathVariable("id") String id) {
         boolean result = false;
@@ -70,8 +73,9 @@ public class TagController {
     }
 
     @ApiOperation("标签批量删除接口")
-    @DeleteMapping("/remove")
-    public Object remove(String[] ids) {
+    @PreAuthorize("hasAuthority('tag:delete')")
+    @DeleteMapping("/removes")
+    public Object removes(String[] ids) {
         if (ids.length==0) {
             return ApiResponse.error("请提供需要删除的标签ID清单！");
         }
@@ -88,6 +92,7 @@ public class TagController {
     }
 
     @ApiOperation("标签修改接口")
+    @PreAuthorize("hasAuthority('tag:update')")
     @PutMapping("/edit")
     public Object edit(@RequestBody TagUpdateDto tagUpdateDto) {
         Tag tag = Tag.builder().build();
@@ -106,8 +111,16 @@ public class TagController {
             return ApiResponse.error("操作失败！");
         }
     }
+    @ApiOperation("标签查找接口")
+    @PreAuthorize("hasAuthority('tag:find')")
+    @GetMapping("/find/{id}")
+    public ApiResponse find(@PathVariable("id") Integer id) {
+        // TODO
+        return ApiResponse.ok(id);
+    }
 
-    @ApiOperation("标签查询接口")
+    @ApiOperation("标签搜索接口")
+    @PreAuthorize("hasAuthority('tag:search')")
     @PostMapping("/search")
     public Object search(@RequestBody TagQueryDto queryDto) {
         try {

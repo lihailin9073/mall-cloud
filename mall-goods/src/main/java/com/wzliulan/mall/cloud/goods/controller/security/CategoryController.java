@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -34,6 +35,7 @@ public class CategoryController {
     private ICategoryService categoryService;
 
     @ApiOperation("品类创建接口")
+    @PreAuthorize("hasAuthority('category:add')")
     @PostMapping("/create")
     public Object create(@RequestBody CategoryCreateDto categoryCreateDto) {
         Category category = Category.builder().build();
@@ -52,6 +54,7 @@ public class CategoryController {
 
     @ApiOperation("品类删除接口")
     @ApiImplicitParam(name = "id", value = "品类ID", required = true)
+    @PreAuthorize("hasAuthority('category:delete')")
     @DeleteMapping("/remove/{id}")
     public Object remove(@PathVariable("id") String id) {
         try {
@@ -65,6 +68,7 @@ public class CategoryController {
     }
 
     @ApiOperation("品类修改接口")
+    @PreAuthorize("hasAuthority('category:update')")
     @PutMapping("/edit")
     public Object edit(@RequestBody CategoryUpdateDto categoryUpdateDto) {
         Category category = Category.builder().build();
@@ -83,11 +87,12 @@ public class CategoryController {
 
     @ApiOperation("品类查找接口")
     @ApiImplicitParam(name = "id", value = "品类ID", required = true)
+    @PreAuthorize("hasAuthority('category:find')")
     @GetMapping("/find/{id}")
     public Object find(@PathVariable("id") String id) {
         try {
             Category category = categoryService.getById(id);
-            if (null != category) return ApiResponse.ok(category);
+            return ApiResponse.ok(category);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -95,6 +100,7 @@ public class CategoryController {
     }
 
     @ApiOperation("品类搜索接口")
+    @PreAuthorize("hasAuthority('category:search')")
     @PostMapping("/search")
     public Object search(@RequestBody CategoryQueryDto categoryQueryDto) {
         try {
@@ -111,6 +117,7 @@ public class CategoryController {
             @ApiImplicitParam(name = "sourceCategoryId", value = "来源分类ID", required = true),
             @ApiImplicitParam(name = "targetCategoryId", value = "目标分类ID", required = true)
     })
+    @PreAuthorize("hasAuthority('category:move')")
     @PutMapping("/move-goods")
     public Object moveGoods(String sourceCategoryId, String targetCategoryId) {
         // TODO 涉及商品表的业务，待后续开发
