@@ -16,14 +16,21 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>mall-gateway</module>
-        <module>oauth2-server</module>
-        <module>mall-common</module>
+        <module>mybatis-plus-generator</module>
+        <module>mall-cloud-common</module>
+        <module>mall-cloud-gateway</module>
+        <module>mall-cloud-oauth2-server</module>
+        <module>mall-cloud-system</module>
         <module>mall-article</module>
         <module>mall-question</module>
-        <module>mall-system</module>
-        <module>mall-goods</module>
-        <module>mybatis-plus-generator</module>
+        <module>mall-cloud-goods</module>
+        <module>mall-cloud-order</module>
+        <module>mall-cloud-marketing</module>
+        <module>mall-cloud-live</module>
+        <module>mall-cloud-content</module>
+        <module>mall-cloud-ads</module>
+        <module>mall-cloud-report</module>
+        <module>mall-cloud-search</module>
     </modules>
 
     <properties>
