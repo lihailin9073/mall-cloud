@@ -55,4 +55,23 @@ public class Swagger2Config {
                 .contact(new Contact("浏览电子商务有限公司","http://www.wzliulan.com/contact","767679879@qq.com"))
                 .build();
     }
+
+    @Bean
+    Docket docket3() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("管理接口")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.wzliulan.mall.cloud.search.controller.security"))
+                .paths(PathSelectors.any())
+                .build()
+                .apiInfo(this.getApiInfo3());
+    }
+    private ApiInfo getApiInfo3() {
+        return new ApiInfoBuilder()
+                .title("[系统微服务/Feign-API]接口文档")
+                .version("2021.0.1")
+                .description("广告微服务-品类、品牌、广告、属性等服务接口")
+                .contact(new Contact("浏览电子商务有限公司","http://www.wzliulan.com/contact","767679879@qq.com"))
+                .build();
+    }
 }

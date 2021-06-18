@@ -1,0 +1,111 @@
+#server:
+#  port: 8911
+#  servlet:
+#    context-path: /file
+
+#spring:
+#  application:
+#    name: file-service
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 192.168.1.201:8848
+#        namespace: 4de4b457-1250-40fc-a274-85a029095374
+#        group: pre.release
+#        cluster-name: GuangZhou
+#        metadata:
+#          service-version: 2020.1210
+#          api-info: The lastest Api.
+##  datasource:
+##    url: jdbc:mysql://192.168.1.201:3306/mall-cloud-file?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&allowMultiQueries=true
+##    # type: com.alibaba.druid.pool.DruidDataSource
+##    # driverClassName: com.mysql.cj.jdbc.Driver
+##    username: root
+##    password: LHLlhl@870104
+#  datasource:
+#    url: jdbc:mysql://192.168.1.201:3306/mall-cloud-file?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&allowMultiQueries=true
+#    hikari:
+#      username: root
+#      password: LHLlhl@870104
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#    druid:
+#      username: root
+#      password: LHLlhl@870104
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      # 指定启动连接池时，初始建立的连接数量
+#      initial-size: 10
+#      # 指定连接池中最小的活跃连接数
+#      min-idle: 10
+#      # 指定连接池中最大的活跃连接数
+#      max-active: 20
+#      # 指定连接池等待连接返回的最大等待时间 / 毫秒
+#      max-wait: 60000
+#      # 空闲连接回收的时间间隔，与test-while-idle一起使用，设置5分钟
+#      time-between-eviction-runs-millis: 300000
+#      test-while-idle: true
+#      # 连接池空闲连接的有效时间 ，设置30分钟
+#      min-evictable-idle-time-millis: 1800000
+#      # 验证连接是否可用
+#      validation-query: SELECT 1
+#      # 允许执行多条SQL：注意！！不要同时配置filters和Filters，这里的配置和下面开启Druid控制台的配置有冲突、只能二选一！！
+#      filter:
+#        wall:
+#          config:
+#            multi-statement-allow: true
+##      # ---开启Druid控制台 ！注意生产环境下要修改为安全值！
+##      filters: stat,wall
+##      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+##      web-stat-filter:
+##        enabled: true
+##        url-pattern: /*
+##        exclusions: /druid/*,*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico
+##      stat-view-servlet:
+##        enabled: true
+##        allow: 127.0.0.1,192.168.1.1
+##        url-pattern: /druid/*
+##        login-username: admin
+##        login-password: 123456
+##        deny: 192.168.2.2
+##        reset-enable: false
+##      # ---开启Druid数据源控制台 ！！注意生产环境下要修改为安全值！！
+#
+#  jackson:
+#    default-property-inclusion: ALWAYS
+#    time-zone: GMT+8
+#    date-format: yyyy-MM-dd HH:mm:ss
+#
+##mybatis-plus:
+#  # 它一般对应我们的实体类所在的包，这个时候MyBatis会自动取对应包中不包括包名的简单类名作为包括包名的别名。多个package之间可以用逗号或者分号等来进行分隔
+#  # type-aliases-package: com.wzliulan.mall.domain.model.article
+#  # 它表示我们的Mapper文件存放的位置，当我们的Mapper文件跟对应的Mapper接口处于同一位置的时候可以不用指定该属性的值
+##  mapper-locations: classpath*:com/wzliulan/blog/mall/goods/mapper/*.xml
+#
+## 日志级别，会打印sql语句
+#logging:
+#  level:
+#    com.wzliulan.mall.goods.mapper: debug
+#
+## 阿里云OSS配置
+#mall:
+#  aliyun:
+#    # OSS端点信息
+#    endpoint: https://oss-cn-beijing.aliyuncs.com
+#    accessKeyId: LTAI4G7LabLGbyh1U1bF4zQM
+#    accessKeySecret: GICubgwsU5TMHX3LgVuafyxFNf9Lgz
+#    # Bucket存储空间名称
+#    bucketName: ms-blog-oss
+#    # Bucket 域名：访问图片时的基础URL
+#    bucketDomain: https://ms-blog-oss.oss-cn-beijing.aliyuncs.com
+#
+#swagger:
+#  title: 商品微服务接口文档
+#  version: 2021.0.1
+#  description: 商品微服务-品类、品牌、商品、属性等服务接口
+#  exclude-path: /error # 排除的api
+#  base-package: com.wzliulan.mall.goods.controller.security
+#  contact:
+#    name: 浏览电子商务有限公司
+#    url: www.wzliulan.com
+#    email: 767679879@qq.com
+#  authorization:
+#    key-name: Authorization

@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mall-cloud-report</artifactId>
+    <description>生意参谋微服务</description>
 
     <dependencies>
         <dependency>
@@ -24,9 +25,10 @@
 
         <dependency>
             <groupId>com.wzliulan.mall.cloud</groupId>
-            <artifactId>mall-cloud-common</artifactId>
+            <artifactId>mall-cloud-feign</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>

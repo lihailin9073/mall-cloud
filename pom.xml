@@ -32,6 +32,8 @@
         <module>mall-cloud-search</module>
         <module>mall-article</module>
         <module>mall-question</module>
+        <module>mall-cloud-file</module>
+        <module>mall-cloud-pay</module>
     </modules>
 
     <properties>
