@@ -74,6 +74,7 @@ public class AccessTokenFilter implements GlobalFilter, Ordered {
             JSONObject result = new JSONObject();
             result.put("code", 1401);
             result.put("message", message);
+            result.put("data", message);
 
             // 转换对象为字节
             byte[] bytes = result.toJSONString().getBytes(StandardCharsets.UTF_8);

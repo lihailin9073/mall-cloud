@@ -2,7 +2,7 @@ package com.wzliulan.mall.cloud.oauth2.oauth.service;
 
 import com.wzliulan.mall.cloud.domain.model.system.Menu;
 import com.wzliulan.mall.cloud.domain.model.system.User;
-import com.wzliulan.mall.cloud.feign.SystemFeign;
+import com.wzliulan.mall.cloud.feign.ISystemFeign;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import java.util.List;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
-    private SystemFeign systemFeign;
+    private ISystemFeign ISystemFeign;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -30,13 +30,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
 
         // 2、通过用户名查询数据库中的用户信息
-        User user = systemFeign.findUserByUserName(username);
+        User user = ISystemFeign.findUserByUserName(username);
         if (null == user) {
             throw new BadCredentialsException("用户名或密码错误");
         }
 
         // 3、通过用户ID查询数据库中的权限信息
-        List<Menu> menuList = systemFeign.findMenuListByUserId(user.getId());
+        List<Menu> menuList = ISystemFeign.findMenuListByUserId(user.getId());
 
         // 4、封装权限信息：即把权限标志符[权限码] code 字段的值封装到 com.wzliulan.mall.cloud.oauth2.service.JwtUser.authorities 属性中，Spring Security支持两种鉴权数据：角色名、权限码
         List<GrantedAuthority> authorities = null;

@@ -1,7 +1,7 @@
 package com.wzliulan.mall.cloud.question.controller.feign;
 
 import com.wzliulan.mall.cloud.domain.dto.blog.UserBaseInfoUpdateDto;
-import com.wzliulan.mall.cloud.feign.QuestionFeign;
+import com.wzliulan.mall.cloud.feign.IQuestionFeign;
 import com.wzliulan.mall.cloud.question.service.IQuestionService;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @Api(description = "提供给其它微服务进行Feign远程调用的接口")
 @RestController
-public class QuestionFeignController implements QuestionFeign {
+public class QuestionFeign implements IQuestionFeign {
     @Autowired
     private IQuestionService questionService;
 

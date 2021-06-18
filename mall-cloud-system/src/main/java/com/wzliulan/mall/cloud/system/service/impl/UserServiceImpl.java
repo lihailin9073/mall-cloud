@@ -5,12 +5,11 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.wzliulan.mall.cloud.domain.dto.blog.*;
 import com.wzliulan.mall.cloud.domain.dto.ApiResponse;
 import com.wzliulan.mall.cloud.domain.model.system.User;
-import com.wzliulan.mall.cloud.feign.ArticleFeign;
-import com.wzliulan.mall.cloud.feign.QuestionFeign;
+import com.wzliulan.mall.cloud.feign.IArticleFeign;
+import com.wzliulan.mall.cloud.feign.IQuestionFeign;
 import com.wzliulan.mall.cloud.system.mapper.UserMapper;
 import com.wzliulan.mall.cloud.system.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.wzliulan.mall.cloud.domain.dto.blog.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
@@ -155,9 +154,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Autowired
-    private ArticleFeign articleFeign;
+    private IArticleFeign articleFeign;
     @Autowired
-    private QuestionFeign questionFeign;
+    private IQuestionFeign questionFeign;
 
     @Override
     public ApiResponse updateUserInfo(UserInfoUpdateDto userInfoUpdateDto) {

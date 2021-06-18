@@ -18,6 +18,7 @@
     <modules>
         <module>mybatis-plus-generator</module>
         <module>mall-cloud-common</module>
+        <module>mall-cloud-feign</module>
         <module>mall-cloud-gateway</module>
         <module>mall-cloud-oauth2-server</module>
         <module>mall-cloud-system</module>

@@ -8,7 +8,7 @@ import com.wzliulan.mall.cloud.domain.dto.blog.UserBaseInfoUpdateDto;
 import com.wzliulan.mall.cloud.domain.dto.ApiResponse;
 import com.wzliulan.mall.cloud.domain.model.article.Label;
 import com.wzliulan.mall.cloud.domain.model.question.Question;
-import com.wzliulan.mall.cloud.feign.ArticleFeign;
+import com.wzliulan.mall.cloud.feign.IArticleFeign;
 import com.wzliulan.mall.cloud.question.mapper.QuestionMapper;
 import com.wzliulan.mall.cloud.question.service.IQuestionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -33,7 +33,7 @@ import java.util.*;
 @Service
 public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> implements IQuestionService {
     @Autowired
-    private ArticleFeign articleFeign;
+    private IArticleFeign articleFeign;
 
     @Override
     public IPage<Question> queryHotQuestions(BaseQueryDto<Question> baseQueryDto) {

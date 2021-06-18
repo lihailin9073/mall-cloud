@@ -1,4 +1,4 @@
-package com.wzliulan.mall.cloud.goods.controller.open;
+package com.wzliulan.mall.cloud.order.controller.open;
 
 import com.wzliulan.mall.cloud.domain.dto.ApiResponse;
 import io.swagger.annotations.Api;
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(description = "标签开放接口")
-@RequestMapping("/api/tag")
+@Api(description = "快递开放接口")
+@RequestMapping("/api/express")
 @RestController()
-public class TagApiController {
+public class ExpressApiController {
 
     @ApiOperation("t1-测试端点")
     @GetMapping("/t1")

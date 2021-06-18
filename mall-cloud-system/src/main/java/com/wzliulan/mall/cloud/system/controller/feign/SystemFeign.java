@@ -2,7 +2,7 @@ package com.wzliulan.mall.cloud.system.controller.feign;
 
 import com.wzliulan.mall.cloud.domain.model.system.Menu;
 import com.wzliulan.mall.cloud.domain.model.system.User;
-import com.wzliulan.mall.cloud.feign.SystemFeign;
+import com.wzliulan.mall.cloud.feign.ISystemFeign;
 import com.wzliulan.mall.cloud.system.service.IMenuService;
 import com.wzliulan.mall.cloud.system.service.IUserService;
 import io.swagger.annotations.Api;
@@ -16,7 +16,7 @@ import java.util.List;
 @Slf4j
 @Api(description = "提供给其它微服务进行Feign远程调用的接口")
 @RestController
-public class SystemFeignController implements SystemFeign {
+public class SystemFeign implements ISystemFeign {
     @Autowired
     private IUserService userService;
     @Autowired

@@ -5,12 +5,15 @@ import com.wzliulan.mall.cloud.domain.model.article.Label;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
 @FeignClient(name = "article-service", contextId = "article-service-client-001")//, configuration = FeignRequestInterceptor.class)
-public interface ArticleFeign {
+public interface IArticleFeign {
 
     // allowMultiple = true 表示是数组格式的参数， dataType = "String" 数组中参数的类型
     @ApiImplicitParam(allowMultiple = true, dataType = "String", name="ids", value = "标签ID集合", required = true)

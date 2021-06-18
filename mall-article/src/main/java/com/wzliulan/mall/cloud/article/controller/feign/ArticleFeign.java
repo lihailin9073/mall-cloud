@@ -4,7 +4,7 @@ import com.wzliulan.mall.cloud.article.service.IArticleService;
 import com.wzliulan.mall.cloud.article.service.ILabelService;
 import com.wzliulan.mall.cloud.domain.dto.blog.UserBaseInfoUpdateDto;
 import com.wzliulan.mall.cloud.domain.model.article.Label;
-import com.wzliulan.mall.cloud.feign.ArticleFeign;
+import com.wzliulan.mall.cloud.feign.IArticleFeign;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.util.List;
 @Slf4j
 @Api(description = "提供给其它微服务进行Feign远程调用的接口")
 @RestController
-public class ArticleFeignController implements ArticleFeign {
+public class ArticleFeign implements IArticleFeign {
     @Autowired
     private ILabelService labelService;
     @Autowired

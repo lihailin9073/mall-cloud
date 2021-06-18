@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import java.util.List;
 
 @FeignClient(name = "system-service", contextId = "system-service-client-001")//, configuration = FeignRequestInterceptor.class)
-public interface SystemFeign {
+public interface ISystemFeign {
     @ApiOperation("用户信息搜索接口")
     @ApiImplicitParam(name = "userName", value = "用户登录账号", required = true)
     @PutMapping("/api/feign/user/{userName}")
