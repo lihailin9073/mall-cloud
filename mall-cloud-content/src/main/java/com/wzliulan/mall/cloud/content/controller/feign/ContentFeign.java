@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.UUID;
 
 @Api(description = "Feign接口")
-@RequestMapping("/feign")
+@RequestMapping("/content-feign")
 @RestController
 public class ContentFeign implements IContentFeign {
 

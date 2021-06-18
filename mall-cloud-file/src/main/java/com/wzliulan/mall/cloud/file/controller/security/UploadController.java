@@ -1,31 +1,53 @@
 package com.wzliulan.mall.cloud.file.controller.security;
 
 import com.wzliulan.mall.cloud.domain.dto.ApiResponse;
+import com.wzliulan.mall.cloud.enums.FileFromEnum;
+import com.wzliulan.mall.cloud.properties.AliyunProperties;
+import com.wzliulan.mall.cloud.properties.OssProperties;
+import com.wzliulan.mall.cloud.utils.AliyunUtil;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import java.util.UUID;
 
 @Api(description = "文件上传管理接口")
 @RequestMapping("/pay")
 @RestController
 public class UploadController {
+    @Resource
+    private AliyunProperties aliyunProperties;
 
-    @ApiOperation("t1-测试端点")
-    @GetMapping("/t1")
-    public ApiResponse t1() {
-        // TODO
-        return ApiResponse.ok(UUID.randomUUID().toString());
+    @ApiOperation("文件上传")
+    @PostMapping("/upload")
+    public ApiResponse upload(@RequestParam("my_file") MultipartFile file) {
+        // 获取OSS配置
+        OssProperties oss = aliyunProperties.getOss();
+        //log.info("oss-oss配置：{}", oss.toString());
+
+        // 上传文件
+        return AliyunUtil.uploadFileToOss(FileFromEnum.ARTICLE, file, oss);
     }
 
-    @ApiOperation("t2-测试端点")
-    @GetMapping("/t2")
-    public ApiResponse t2() {
-        // TODO
-        return ApiResponse.ok(UUID.randomUUID().toString());
+    @ApiOperation("文件删除")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "file_url", value = "文件URL", required = true)
+    })
+    @DeleteMapping("/delete")
+    public ApiResponse delete(@RequestParam(value = "file_url", required = true) String fileUrl) {
+        // 获取OSS配置
+        OssProperties oss = aliyunProperties.getOss();
+        // 删除文件
+        return AliyunUtil.delete(fileUrl, oss);
     }
 
+    @ApiOperation("oss配置获取")
+    @GetMapping("/get-oss-config")
+    public ApiResponse getOssConfig() {
+        return ApiResponse.ok(aliyunProperties.getOss());
+    }
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.UUID;
 
 @Api(description = "Feign接口")
-@RequestMapping("/feign")
+@RequestMapping("/file-feign")
 @RestController
 public class FileFeign implements IFileFeign {
 
