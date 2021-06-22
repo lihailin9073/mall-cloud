@@ -2,10 +2,10 @@ package com.wzliulan.mall.cloud.goods.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.wzliulan.mall.cloud.domain.dto.mall.TypeQueryDto;
-import com.wzliulan.mall.cloud.domain.entity.mall.TypeDomain;
+import com.wzliulan.mall.cloud.domain.entity.mall.GoodsTypeDomain;
 import com.wzliulan.mall.cloud.domain.model.mall.goods.Type;
-import com.wzliulan.mall.cloud.goods.service.ITypeService;
-import com.wzliulan.mall.cloud.goods.mapper.TypeMapper;
+import com.wzliulan.mall.cloud.goods.service.IGoodsTypeService;
+import com.wzliulan.mall.cloud.goods.mapper.GoodsTypeMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -20,13 +20,13 @@ import javax.annotation.Resource;
  * @since 2021-04-17
  */
 @Service
-public class TypeServiceImpl extends ServiceImpl<TypeMapper, Type> implements ITypeService {
+public class TypeServiceImpl extends ServiceImpl<GoodsTypeMapper, Type> implements IGoodsTypeService {
     @Resource
-    private TypeMapper typeMapper;
+    private GoodsTypeMapper goodsTypeMapper;
 
     @Override
-    public IPage<TypeDomain> search(TypeQueryDto typeQueryDto) {
-        IPage<TypeDomain> typeDomainIPage = typeMapper.typeManageList(typeQueryDto.getPage(), typeQueryDto);
+    public IPage<GoodsTypeDomain> search(TypeQueryDto typeQueryDto) {
+        IPage<GoodsTypeDomain> typeDomainIPage = goodsTypeMapper.typeManageList(typeQueryDto.getPage(), typeQueryDto);
         return typeDomainIPage;
     }
 }

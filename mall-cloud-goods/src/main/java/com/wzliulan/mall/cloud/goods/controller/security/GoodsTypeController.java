@@ -6,9 +6,9 @@ import com.wzliulan.mall.cloud.domain.dto.ApiResponse;
 import com.wzliulan.mall.cloud.domain.dto.mall.TypeCreateDto;
 import com.wzliulan.mall.cloud.domain.dto.mall.TypeQueryDto;
 import com.wzliulan.mall.cloud.domain.dto.mall.TypeUpdateDto;
-import com.wzliulan.mall.cloud.domain.entity.mall.TypeDomain;
+import com.wzliulan.mall.cloud.domain.entity.mall.GoodsTypeDomain;
 import com.wzliulan.mall.cloud.domain.model.mall.goods.Type;
-import com.wzliulan.mall.cloud.goods.service.ITypeService;
+import com.wzliulan.mall.cloud.goods.service.IGoodsTypeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -28,10 +28,10 @@ import java.util.Date;
  */
 @Api(description = "商品类型管理接口")
 @RestController
-@RequestMapping("/type")
-public class TypeController {
+@RequestMapping("/goods-type")
+public class GoodsTypeController {
     @Resource
-    private ITypeService typeService;
+    private IGoodsTypeService goodsTypeService;
 
     @ApiOperation("商品类型创建")
     @PostMapping("/create")
@@ -41,7 +41,7 @@ public class TypeController {
         type.setCreateTime(new Date());
 
         try {
-            boolean result = typeService.save(type);
+            boolean result = goodsTypeService.save(type);
             if (result) return ApiResponse.ok();
             return ApiResponse.error("操作失败");
         } catch (Exception e) {
@@ -55,7 +55,7 @@ public class TypeController {
     @DeleteMapping("/remove/{id}")
     public Object remove(@PathVariable("id") String id){
         try {
-            boolean result = typeService.removeById(id);
+            boolean result = goodsTypeService.removeById(id);
             if (result) return ApiResponse.ok();
             return ApiResponse.error("操作失败");
         } catch (Exception e) {
@@ -72,7 +72,7 @@ public class TypeController {
         type.setUpdateTime(new Date());
 
         try {
-            boolean result = typeService.updateById(type);
+            boolean result = goodsTypeService.updateById(type);
             if (result) return ApiResponse.ok();
             return ApiResponse.error("操作失败");
         } catch (Exception e) {
@@ -84,10 +84,10 @@ public class TypeController {
     @ApiOperation("商品类型搜索")
     @PostMapping("/search")
     public Object search(@RequestBody TypeQueryDto typeQueryDto){
-        IPage<TypeDomain> typeDomainIPage = null;
+        IPage<GoodsTypeDomain> iPage = null;
         try {
-            typeDomainIPage = typeService.search(typeQueryDto);
-            return ApiResponse.ok(typeDomainIPage);
+            iPage = goodsTypeService.search(typeQueryDto);
+            return ApiResponse.ok(iPage);
         } catch (Exception e) {
             e.printStackTrace();
             return ApiResponse.error("查询服务异常");

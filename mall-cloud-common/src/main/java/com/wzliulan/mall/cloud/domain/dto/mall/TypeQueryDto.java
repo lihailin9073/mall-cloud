@@ -1,7 +1,7 @@
 package com.wzliulan.mall.cloud.domain.dto.mall;
 
 import com.wzliulan.mall.cloud.domain.dto.blog.BaseQueryDto;
-import com.wzliulan.mall.cloud.domain.entity.mall.TypeDomain;
+import com.wzliulan.mall.cloud.domain.entity.mall.GoodsTypeDomain;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
@@ -14,7 +14,7 @@ import lombok.experimental.Accessors;
 @Builder
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value="类型查询Domain", description="类型查询Domain")
-public class TypeQueryDto extends BaseQueryDto<TypeDomain> {
+public class TypeQueryDto extends BaseQueryDto<GoodsTypeDomain> {
     /**
      * 类型名称
      */

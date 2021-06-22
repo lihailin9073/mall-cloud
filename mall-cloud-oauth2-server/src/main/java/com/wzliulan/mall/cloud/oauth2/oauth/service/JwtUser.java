@@ -50,7 +50,7 @@ public class JwtUser implements UserDetails {
     private boolean isAccountNonLocked;
 
     @JSONField(serialize = false) // 忽略转json
-    @ApiModelProperty(value = "密码是否过期(1 未过期，0已过期)")
+    @ApiModelProperty(value = "认证是否过期(1 未过期，0已过期)")
     private boolean isCredentialsNonExpired;
 
     @JSONField(serialize = false) // 忽略转json

@@ -77,25 +77,27 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         //super.configure(endpoints);
-        // 设置密码模式所需的AuthenticationManager对象
+        // 设置认证管理器：密码模式需要该对象（实际上，4种模式中除了客户端模式外，其它3中模式都需要用到这个认证管理器）
         endpoints.authenticationManager(authenticationManager);
+
         // 设置刷新令牌需要用的用户信息
         endpoints.userDetailsService(userDetailsService);
+
         // 设置令牌的管理方式、令牌的jwt转换器
         endpoints.tokenStore(tokenStore).accessTokenConverter(jwtAccessTokenConverter);
 
-        // 设置自定义身份认证响应信息的增强器
+        // 设置令牌增强器
         TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
         List<TokenEnhancer> enhancerList = new ArrayList<>();
         enhancerList.add(jwtTokenEnhancer);
         enhancerList.add(jwtAccessTokenConverter);
         tokenEnhancerChain.setTokenEnhancers(enhancerList);
-        endpoints.tokenEnhancer(tokenEnhancerChain).accessTokenConverter(jwtAccessTokenConverter); // 将认证信息的增强器添加到端点上
+        endpoints.tokenEnhancer(tokenEnhancerChain).accessTokenConverter(jwtAccessTokenConverter); // 将令牌增强器添加到端点上
     }
 
     /**
      * 认证服务器访问配置
-     * @param security
+     * @param security 认证配置对象
      * @throws Exception
      */
     @Override
@@ -104,6 +106,5 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
         // 开放令牌解析端点 /oauth/check_token， 该端点默认是禁止访问的
         security.checkTokenAccess("permitAll()");
     }
-
 
 }

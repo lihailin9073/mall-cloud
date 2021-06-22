@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * OAuth2 响应信息定制化组件
+ * 令牌增强器：可以对令牌处理增加新的业务逻辑，比如修改令牌中携带的数据
  */
 @Component
 public class JwtTokenEnhancer implements TokenEnhancer {

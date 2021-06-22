@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wzliulan.mall.cloud.goods.mapper.TypeMapper">
+<mapper namespace="com.wzliulan.mall.cloud.goods.mapper.GoodsTypeMapper">
     <!--类型管理列表查询方法-->
-    <select id="typeManageList" resultType="com.wzliulan.mall.cloud.domain.entity.mall.TypeDomain">
+    <select id="typeManageList" resultType="com.wzliulan.mall.cloud.domain.entity.mall.GoodsTypeDomain">
         -- 参考：yp-shop代码中的SQL语句
         SELECT
             t.*, COUNT(a.cat_id) AS attr_count
         FROM
-            `m_type` AS t
+            `m_goods_type` AS t
         LEFT JOIN m_attribute a ON a.cat_id = t.cat_id
         <if test="typeQueryDto.name!=null and typeQueryDto.name!=''">
             WHERE t.cat_name LIKE CONCAT('%', #{typeQueryDto.name}, '%')

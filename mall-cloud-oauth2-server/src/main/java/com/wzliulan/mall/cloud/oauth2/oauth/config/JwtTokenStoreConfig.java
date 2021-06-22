@@ -54,8 +54,8 @@ public class JwtTokenStoreConfig {
         TokenStore tokenStore = new JwtTokenStore(this.jwtAccessTokenConverter()) {
             /**
              * 存储令牌到Redis
-             * @param token
-             * @param authentication
+             * @param token 令牌对象
+             * @param authentication 开放认证对象
              */
             @Override
             public void storeAccessToken(OAuth2AccessToken token, OAuth2Authentication authentication) {

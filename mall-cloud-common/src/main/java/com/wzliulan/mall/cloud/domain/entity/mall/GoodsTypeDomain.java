@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Data
 @ApiModel(value="类型搜索结果Domain", description="类型搜索结果Domain")
-public class TypeDomain implements Serializable {
+public class GoodsTypeDomain implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "类型ID")

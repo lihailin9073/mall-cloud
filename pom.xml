@@ -30,10 +30,10 @@
         <module>mall-cloud-ads</module>
         <module>mall-cloud-report</module>
         <module>mall-cloud-search</module>
-        <module>mall-article</module>
-        <module>mall-question</module>
         <module>mall-cloud-file</module>
         <module>mall-cloud-pay</module>
+        <module>mall-article</module>
+        <module>mall-question</module>
     </modules>
 
     <properties>

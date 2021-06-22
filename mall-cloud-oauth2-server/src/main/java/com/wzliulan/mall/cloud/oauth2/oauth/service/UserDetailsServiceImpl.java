@@ -20,7 +20,7 @@ import java.util.List;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
-    private ISystemFeign ISystemFeign;
+    private ISystemFeign systemFeign;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -30,13 +30,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
 
         // 2、通过用户名查询数据库中的用户信息
-        User user = ISystemFeign.findUserByUserName(username);
+        User user = systemFeign.findUserByUserName(username);
         if (null == user) {
             throw new BadCredentialsException("用户名或密码错误");
         }
 
         // 3、通过用户ID查询数据库中的权限信息
-        List<Menu> menuList = ISystemFeign.findMenuListByUserId(user.getId());
+        List<Menu> menuList = systemFeign.findMenuListByUserId(user.getId());
 
         // 4、封装权限信息：即把权限标志符[权限码] code 字段的值封装到 com.wzliulan.mall.cloud.oauth2.service.JwtUser.authorities 属性中，Spring Security支持两种鉴权数据：角色名、权限码
         List<GrantedAuthority> authorities = null;
@@ -58,11 +58,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             isAccountNonLocked = true;
         }
         boolean isCredentialsNonExpired = false;
-        if (1==user.getIsCredentialsNonExpired()) { // 密码是否过期(1 未过期，0已过期)
+        if (1==user.getIsCredentialsNonExpired()) { // 认证是否过期(1 未过期，0已过期)
             isCredentialsNonExpired = true;
         }
         boolean isEnabled = false;
-        if (1==user.getIsEnabled()) { // 帐户是否可用(1 可用，0 删除用户)
+        if (1==user.getIsEnabled()) { // 帐户是否可用(1 可用，0 不可用户)
             isEnabled = true;
         }
         JwtUser jwtUser = JwtUser.builder()
