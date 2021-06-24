@@ -33,7 +33,7 @@ public class JwtTokenStoreConfig {
      */
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
-        // 参数-1：指定私钥文件，参数-2：指定存储口令
+        // 参数-1：指定秘钥文件，参数-2：指定存储口令
         KeyStoreKeyFactory factory = new KeyStoreKeyFactory(new ClassPathResource("blog.jks"), "mypass".toCharArray());
         // 参数为秘钥文件的别名
         KeyPair keyPair = factory.getKeyPair("blog");

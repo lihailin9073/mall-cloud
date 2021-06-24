@@ -2,8 +2,9 @@
 	Spring Boot
     Spring Cloud
 	Spring Security
-	Spring Cloud OAuth2 + 认证中心
+	Spring Cloud OAuth2
 	MyBatis Plus/Redis/MyCat/Seata/Kafka/ELK/K8s/Rancher/Zipkin/Sentinel等系列微服务中间件
+	文件管理：支持OSS、NFS、GFS、FastDFS等多种分布式文件系统
 
 主要用途：
 	- 打造产品，后续创业推广软件公司用
