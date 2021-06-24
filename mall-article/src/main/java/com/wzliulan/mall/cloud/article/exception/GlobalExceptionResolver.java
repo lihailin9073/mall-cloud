@@ -21,12 +21,14 @@ import java.util.Map;
 public class GlobalExceptionResolver implements HandlerExceptionResolver {
     @Override
     public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse response, Object o, Exception e) {
+        String message = "系统发生异常，异常信息跟踪如下：" + e.toString();
+        Map<String, Object> data = new HashMap<>();
+        data.put("code", 500);
+        data.put("message", message);
+        data.put("data", message);
+
         ModelAndView mv = new ModelAndView(new MappingJackson2JsonView());
-        Map<String, Object> map = new HashMap<>();
-        map.put("code", 500);
-        map.put("message", "系统发生异常..." + e.toString());
-        //map.put("exception", e.toString());
-        mv.addAllObjects(map);
+        mv.addAllObjects(data);
         return mv;
     }
 }
