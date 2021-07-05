@@ -21,7 +21,7 @@ public class Swagger2Config {
     @Bean
     Docket docket1() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("开放接口")
+                .groupName("api-开放接口")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.wzliulan.mall.cloud.goods.controller.open"))
                 .paths(PathSelectors.any())
@@ -40,7 +40,7 @@ public class Swagger2Config {
     @Bean
     Docket docket2() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("Feign接口")
+                .groupName("Feign-远程接口")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.wzliulan.mall.cloud.goods.controller.feign"))
                 .paths(PathSelectors.any())
@@ -59,7 +59,7 @@ public class Swagger2Config {
     @Bean
     Docket docket3() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("管理接口")
+                .groupName("security-管理接口")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.wzliulan.mall.cloud.goods.controller.security"))
                 .paths(PathSelectors.any())
